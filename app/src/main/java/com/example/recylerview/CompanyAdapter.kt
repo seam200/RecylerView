@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.recylerview.databinding.ListItemBinding
 
 class CompanyAdapter(private val companyList:ArrayList<Company>):RecyclerView.Adapter<CompanyAdapter.MyViewHolder>() {
+    var onClick :((Company) -> Unit)? = null
     class MyViewHolder(val binding:ListItemBinding):RecyclerView.ViewHolder(binding.root) {
 
     }
@@ -23,8 +24,11 @@ class CompanyAdapter(private val companyList:ArrayList<Company>):RecyclerView.Ad
         holder.binding.companyName.text = company.companyName
         holder.binding.companyDetails.text = company.companyDetails
         holder.binding.companyLogo.setImageResource(company.companyLogo)
+
+        holder.itemView.setOnClickListener {
+            onClick?.invoke(company)
+        }
     }
-    interface OnItemClickListener {
-        fun onItemClick(company: Company)
-    }
-}
+
+
+  }

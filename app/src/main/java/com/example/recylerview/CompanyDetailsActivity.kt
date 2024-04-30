@@ -16,12 +16,12 @@ class CompanyDetailsActivity : AppCompatActivity() {
         binding = ActivityCompanyDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val cmpanyName = intent.getStringExtra("companyName")
-        val cmpanyDetails = intent.getStringExtra("companyDetails")
-        val cmpanyLogo = intent.getIntExtra("companyLogo", 0)
+        var cmpanyName = intent.getStringExtra("companyName")
+        var cmpanyDetails = intent.getStringExtra("companyDetails")
+        var cmpanyLogo = intent.getIntExtra("companyLogo", R.drawable.niyamatunity)
 
-        binding.cName.text = cmpanyName
-        binding.cDesc.text = cmpanyDetails
+        binding.cName.text = cmpanyName.toString()
+        binding.cDesc.text = cmpanyDetails.toString()
         binding.logo.setImageResource(cmpanyLogo)
     }
 }

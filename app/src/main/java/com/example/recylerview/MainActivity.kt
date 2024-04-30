@@ -33,18 +33,15 @@ class MainActivity : AppCompatActivity() {
         companyList.add(Company("Ekhon Bazar", "For All Your Need, Ekhon Bazar Here Is", R.drawable.ekhonbazar, "Ekhon Bazar is your one-stop destination for all your needs. With a diverse range of products and services, Ekhon Bazar offers convenience and accessibility like never before. Whether you're looking for household essentials, electronics, fashion items, or professional services, Ekhon Bazar has it all. Our commitment to quality and customer satisfaction ensures a seamless shopping experience every time. Trust Ekhon Bazar to meet your needs promptly and efficiently, because here, everything you need is right at your fingertips."))
         companyList.add(Company("Peoples Marketing Company", "We Believe in Quality", R.drawable.pmc, "At Peoples Marketing Company, quality is at the core of everything we do. We're dedicated to delivering top-notch products and services that exceed expectations. With a commitment to excellence, integrity, and customer satisfaction, we strive to build lasting relationships and make a positive impact in the market. At Peoples Marketing Company, quality isn't just a goal – it's our promise."))
 
-        recyclerView.adapter = CompanyAdapter(companyList)
-        recyclerView.setOnClickListener (View.OnClickListener {
+        var companyAdapter = CompanyAdapter(companyList)
+        binding.recylerview.adapter = CompanyAdapter(companyList)
+        companyAdapter.onClick = {
             val intent = Intent(this, CompanyDetailsActivity::class.java)
-            intent.putExtra("companyName", companyName)
-            intent.putExtra("companyDetails", companyDetails)
-            intent.putExtra("companyLogo", companyLogo)
+            intent.putExtra("companyName", it.companyName)
+            intent.putExtra("companyDetails", it.companyLongDetails)
+            intent.putExtra("companyLogo", it.companyLogo)
             startActivity(intent)
-        })
         }
-
-
-
-
     }
+}
 
